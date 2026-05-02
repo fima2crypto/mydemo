@@ -170,7 +170,7 @@ export async function fetchKy(
 // Log thử 500 ký tự đầu tiên để kiểm tra
 
 
-console.log("1. Bắt đầu gọi ScraperAPI cho URL:", targetUrl);
+console.log("1. Bắt đầu gọi ScraperAPI cho URL:", finalUrl);
     const res = await fetch(finalUrl, {
       headers: {
         ...HEADERS,
@@ -181,7 +181,7 @@ console.log("1. Bắt đầu gọi ScraperAPI cho URL:", targetUrl);
       signal: AbortSignal.timeout(15000),
     });
 
-console.log("2. Status code nhận được:", res.status);
+  console.log("2. Status code nhận được:", res.status);
 
     if (!res.ok) {
       // Log chi tiết mã lỗi để debug trên Vercel Dashboard
