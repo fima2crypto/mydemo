@@ -55,11 +55,22 @@ const TAB_KEYS = [
   "chon_2",
   "chon_1",
 ];
-
 const HEADERS = {
-  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-  Referer: `${BASE_URL}/vi/trung-thuong/ket-qua-trung-thuong/winning-number-keno`,
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+  'Accept': 'application/json, text/plain, */*',
+  'Accept-Language': 'vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5',
+  'Referer': 'https://vietlott.vn',
+  'Origin': 'https://vietlott.vn',
+  'Cache-Control': 'no-cache',
+  'Pragma': 'no-cache',
 };
+
+
+
+// const HEADERS = {
+//   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+//   Referer: `${BASE_URL}/vi/trung-thuong/ket-qua-trung-thuong/winning-number-keno`,
+// };
 
 // ── DB Pool (singleton) ───────────────────────────────────────────────────────
 let pool: Pool | null = null;
