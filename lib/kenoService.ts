@@ -56,16 +56,15 @@ const TAB_KEYS = [
   "chon_1",
 ];
 const HEADERS = {
-  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-  'Accept': 'application/json, text/plain, */*',
-  'Accept-Language': 'vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5',
-  'Referer': 'https://vietlott.vn',
-  'Origin': 'https://vietlott.vn',
-  'Cache-Control': 'no-cache',
-  'Pragma': 'no-cache',
+  "User-Agent":
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+  Accept: "application/json, text/plain, */*",
+  "Accept-Language": "vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5",
+  Referer: "https://vietlott.vn",
+  Origin: "https://vietlott.vn",
+  "Cache-Control": "no-cache",
+  Pragma: "no-cache",
 };
-
-
 
 // const HEADERS = {
 //   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -144,7 +143,7 @@ export async function fetchKy(
   gioTruoc: string | null = null,
 ): Promise<KenoRecord | null> {
   const url = DETAIL_URL(kySo);
-  
+
   // try {
   //   const res = await fetch(url, {
   //     headers: HEADERS,
@@ -155,22 +154,24 @@ export async function fetchKy(
   //     return null;
   //   }
 
-    try {
-      const res = await fetch(url, {
-        headers: {
-          ...HEADERS,
-          // Thêm User-Agent để giả lập trình duyệt, tránh bị server chặn bot
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        },
-        signal: AbortSignal.timeout(15000),
-      });
+  try {
+    const res = await fetch(url, {
+      headers: {
+        ...HEADERS,
+        // Thêm User-Agent để giả lập trình duyệt, tránh bị server chặn bot
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      },
+      signal: AbortSignal.timeout(15000),
+    });
 
-      if (!res.ok) {
-        // Log chi tiết mã lỗi để debug trên Vercel Dashboard
-        console.error(`Lỗi tại URL: ${url}`);
-        console.error(`Status: ${res.status} - ${res.statusText}`);
-        return null;
-      }
+    if (!res.ok) {
+      // Log chi tiết mã lỗi để debug trên Vercel Dashboard
+      console.error(`Lỗi tại URL: ${url}`);
+      console.error(`Status: ${res.status} - ${res.statusText}`);
+      console.log(res.headers.get("cf-ray"));
+      return null;
+    }
 
     //   // Xử lý dữ liệu nếu thành công
     // } catch (error) {
