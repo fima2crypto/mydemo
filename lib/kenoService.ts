@@ -9,6 +9,13 @@ import * as cheerio from "cheerio";
 import { KenoRecord, LogEntry, SyncOptions, SyncResult } from "@/types/keno";
 import { Element } from "domhandler";
 
+ed8960aae0330e533a8e82bb2f6347fc;
+ed8960aae0330e533a8e82bb2f6347fc;
+
+const apiKey = "ed8960aae0330e533a8e82bb2f6347fc";
+const targetUrl = `https://vietlott.vn/vi/trung-thuong/ket-qua-trung-thuong/view-detail-keno-result?id=0279624`;
+const finalUrl = `http://scraperapi.com?api_key=${apiKey}&url=${encodeURIComponent(targetUrl)}&render=true`;
+
 // ── Constants ────────────────────────────────────────────────────────────────
 const BASE_URL = "https://vietlott.vn";
 const DETAIL_URL = (ky: number) =>
@@ -151,6 +158,8 @@ export async function fetchKy(
 ): Promise<KenoRecord | null> {
   const url = DETAIL_URL(kySo);
 
+  const finalUrl = `http://scraperapi.com?api_key=${apiKey}&url=${encodeURIComponent(url)}&render=true`;
+
   // try {
   //   const res = await fetch(url, {
   //     headers: HEADERS,
@@ -162,7 +171,8 @@ export async function fetchKy(
   //   }
 
   try {
-    const res = await fetch(url, {
+    //const res = await fetch(url, {
+    const res = await fetch(finalUrl, {
       headers: {
         ...HEADERS,
         // Thêm User-Agent để giả lập trình duyệt, tránh bị server chặn bot
