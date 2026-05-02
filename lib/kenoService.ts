@@ -133,12 +133,16 @@ export async function fetchKy(
   gioTruoc: string | null = null,
 ): Promise<KenoRecord | null> {
   const url = DETAIL_URL(kySo);
+  console.log(url);
   try {
     const res = await fetch(url, {
       headers: HEADERS,
       signal: AbortSignal.timeout(15000),
     });
-    if (!res.ok) return null;
+    if (!res.ok) {
+      console.log("bi aaaaaa ");
+      return null;
+    }
 
     const html = await res.text();
     const kyStr7 = String(kySo).padStart(7, "0");
@@ -207,6 +211,7 @@ export async function fetchKy(
       b01: b[1],
     };
   } catch {
+    console.log("errr bi tu choi roi");
     return null;
   }
 }
