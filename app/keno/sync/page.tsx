@@ -82,7 +82,7 @@ export default function KenoSyncPage() {
   const [error, setError] = useState<string | null>(null);
 
   // Options
-  const [dryRun, setDryRun] = useState(false);
+  const [dryRun, setDryRun] = useState(true);
   const [delay, setDelay] = useState(1.0);
   const [startKy, setStartKy] = useState("");
 
