@@ -9,12 +9,7 @@ import * as cheerio from "cheerio";
 import { KenoRecord, LogEntry, SyncOptions, SyncResult } from "@/types/keno";
 import { Element } from "domhandler";
 
-ed8960aae0330e533a8e82bb2f6347fc;
-ed8960aae0330e533a8e82bb2f6347fc;
-
 const apiKey = "ed8960aae0330e533a8e82bb2f6347fc";
-const targetUrl = `https://vietlott.vn/vi/trung-thuong/ket-qua-trung-thuong/view-detail-keno-result?id=0279624`;
-const finalUrl = `http://scraperapi.com?api_key=${apiKey}&url=${encodeURIComponent(targetUrl)}&render=true`;
 
 // ── Constants ────────────────────────────────────────────────────────────────
 const BASE_URL = "https://vietlott.vn";
