@@ -7,6 +7,7 @@
 import { Pool } from "pg";
 import * as cheerio from "cheerio";
 import { KenoRecord, LogEntry, SyncOptions, SyncResult } from "@/types/keno";
+import { Element } from "domhandler";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 const BASE_URL = "https://vietlott.vn";
@@ -95,7 +96,7 @@ function calcGio(
 // ── Parse prize tab ───────────────────────────────────────────────────────────
 function parseTab(
   $: cheerio.CheerioAPI,
-  pane: cheerio.Element,
+  pane: Element,
 ): Record<number, number> {
   const result: Record<number, number> = {};
   const table = $(pane).find("table.tabSelNumberInfo, table").first();

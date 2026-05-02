@@ -12,6 +12,7 @@
     "bcrypt": "^5.1.1",
     "cheerio": "^1.2.0",
     "clsx": "^2.1.1",
+    "domhandler": "^6.0.1",
     "next": "latest",
     "next-auth": "5.0.0-beta.25",
     "pg": "^8.20.0",
