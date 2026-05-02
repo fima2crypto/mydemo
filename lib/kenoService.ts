@@ -133,17 +133,43 @@ export async function fetchKy(
   gioTruoc: string | null = null,
 ): Promise<KenoRecord | null> {
   const url = DETAIL_URL(kySo);
-  console.log(url);
-  try {
-    const res = await fetch(url, {
-      headers: HEADERS,
-      signal: AbortSignal.timeout(15000),
-    });
-    if (!res.ok) {
-      console.log("bi aaaaaa ");
-      return null;
-    }
+  
+  // try {
+  //   const res = await fetch(url, {
+  //     headers: HEADERS,
+  //     signal: AbortSignal.timeout(15000),
+  //   });
+  //   if (!res.ok) {
+  //     console.log("bi aaaaaa ");
+  //     return null;
+  //   }
 
+    try {
+      const res = await fetch(url, {
+        headers: {
+          ...HEADERS,
+          // Thêm User-Agent để giả lập trình duyệt, tránh bị server chặn bot
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        },
+        signal: AbortSignal.timeout(15000),
+      });
+
+      if (!res.ok) {
+        // Log chi tiết mã lỗi để debug trên Vercel Dashboard
+        console.error(`Lỗi tại URL: ${url}`);
+        console.error(`Status: ${res.status} - ${res.statusText}`);
+        return null;
+      }
+
+    //   // Xử lý dữ liệu nếu thành công
+    // } catch (error) {
+    //   if (error.name === 'TimeoutError') {
+    //     console.error("Lỗi: Quá thời gian fetch (15s)");
+    //   } else {
+    //     console.error("Lỗi kết nối:", error.message);
+    //   }
+    //   return null;
+    // }
     const html = await res.text();
     const kyStr7 = String(kySo).padStart(7, "0");
     if (!html.includes(`#${kyStr7}`) && !html.includes(String(kySo)))
