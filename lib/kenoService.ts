@@ -153,7 +153,7 @@ export async function fetchKy(
 ): Promise<KenoRecord | null> {
   const url = DETAIL_URL(kySo);
 
-  const finalUrl = `http://scraperapi.com?api_key=${apiKey}&url=${encodeURIComponent(url)}&render=true`;
+  const finalUrl = `http://api.scraperapi.com?api_key=${apiKey}&url=${encodeURIComponent(url)}&render=true`;
 
   // try {
   //   const res = await fetch(url, {
@@ -166,7 +166,11 @@ export async function fetchKy(
   //   }
 
   try {
-    //const res = await fetch(url, {
+    //const res = await fetch(url, {console.log("Độ dài nội dung nhận được:", html.length);
+// Log thử 500 ký tự đầu tiên để kiểm tra
+
+
+console.log("1. Bắt đầu gọi ScraperAPI cho URL:", targetUrl);
     const res = await fetch(finalUrl, {
       headers: {
         ...HEADERS,
@@ -176,6 +180,8 @@ export async function fetchKy(
       },
       signal: AbortSignal.timeout(15000),
     });
+
+console.log("2. Status code nhận được:", res.status);
 
     if (!res.ok) {
       // Log chi tiết mã lỗi để debug trên Vercel Dashboard
@@ -194,7 +200,12 @@ export async function fetchKy(
     //   }
     //   return null;
     // }
-    const html = await res.text();
+    const html = await res.text()
+
+    console.log("Độ dài nội dung nhận được:", html.length);
+// Log thử 500 ký tự đầu tiên để kiểm tra
+    console.log("Nội dung nháp:", html.substring(0, 500));
+
     const kyStr7 = String(kySo).padStart(7, "0");
     if (!html.includes(`#${kyStr7}`) && !html.includes(String(kySo)))
       return null;
