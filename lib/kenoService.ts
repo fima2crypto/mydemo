@@ -318,11 +318,15 @@ export async function syncMissing(
   }
 
   const db = getPool();
-  const {
-    ky: latestDbKy,
-    ngay: latestDbNgay,
-    gio: latestDbGio,
-  } = await getLatestInDb(db);
+  // const {
+  //   ky: latestDbKy,
+  //   ngay: latestDbNgay,
+  //   gio: latestDbGio,
+  // } = await getLatestInDb(db);
+
+  const latestDbKy = 279623;
+  const latestDbNgay = "2026-05-02";
+  const latestDbGio = "15:28";
 
   let kyFrom: number;
   let ngayTruoc: string | null = null;
